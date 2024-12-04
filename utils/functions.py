@@ -58,10 +58,11 @@ def savefile(f, suffix, filename='') -> str:
 
 def open_supported(many=False):
     formats = [
-        interface.text('System', 'All files') + ' (*.package *.stbl *.xml)',
+        interface.text('System', 'All files') + ' (*.package *.stbl *.xml *.json)',
         interface.text('System', 'Packages') + ' (*.package)',
         interface.text('System', 'STBL files') + ' (*.stbl)',
         interface.text('System', 'XML files') + ' (*.xml)',
+        interface.text('System', 'JSON files') + ' (*.json)',
     ]
     return openfile(';;'.join(formats), many=many)
 
@@ -75,6 +76,10 @@ def open_xml():
 
 def save_xml(filename: str = '') -> str:
     return savefile(interface.text('System', 'XML files') + ' (*.xml)', 'xml', filename)
+
+
+def save_json(filename: str = '') -> str:
+    return savefile(interface.text('System', 'JSON files') + ' (*.json)', 'json', filename)
 
 
 def save_stbl(filename: str = '') -> str:

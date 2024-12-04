@@ -1,10 +1,13 @@
 # -*- coding: utf-8 -*-
 
+import json
 import os
 import operator
 import pathlib
 import gc
 import xml.etree.ElementTree as ElementTree
+from json import JSONDecodeError
+
 from PySide6.QtCore import QObject, Signal
 from PySide6.QtWidgets import QApplication
 from typing import Union, Dict, List
@@ -509,5 +512,30 @@ class PackagesStorage:
 
         return table
 
+    @staticmethod
+    def read_json(path):
+        if not os.path.exists(path):
+            return {}
+
+        try:
+            with open(path, 'r', encoding='utf-8') as fp:
+                content = json.load(fp)
+        except JSONDecodeError:
+            return {}
+
+        entries = content.get('Entries', None)
+
+        if not entries:
+            return {}
+
+        table = {}
+
+        for entry in entries:
+            QApplication.processEvents()
+            sid = int(entry['Key'], 16)
+            source = text_to_stbl(entry['Value'])
+            table[sid] = source
+
+        return table
 
 packages_storage = PackagesStorage()
