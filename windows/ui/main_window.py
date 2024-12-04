@@ -17,7 +17,7 @@ class Ui_MainWindow(object):
         MainWindow.resize(1125, 723)
         MainWindow.setMinimumSize(935, 620)
 
-        title = f'The Sims 4 Translator {APP_VERSION}'
+        title = f'The Sims 4 Translator {APP_VERSION}-JSON'
         if APP_RELEASE_CANDITATE:
             title += ' RC'
 

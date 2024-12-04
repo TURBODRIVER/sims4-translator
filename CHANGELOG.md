@@ -1,5 +1,9 @@
 # Changelog
 
+## Version 1.3.1-JSON - 2024-12-04
+
+- Added support for Sims 4 Studio JSON format
+
 ## Version 1.3.1 - 2024-08-02
 
 - Added German language
