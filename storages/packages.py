@@ -445,6 +445,24 @@ class PackagesStorage:
         return False
 
     @staticmethod
+    def check_json(path):
+        if not os.path.exists(path):
+            return False
+
+        with open(path, 'r', encoding='utf-8') as fp:
+            try:
+                content = json.load(fp)
+            except JSONDecodeError:
+                return False
+
+            entries = content.get('Entries', None)
+
+            if entries:
+                return True
+
+        return False
+
+    @staticmethod
     def read_package(path):
         if not os.path.exists(path):
             return {}

@@ -449,6 +449,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
             if filename.lower().endswith('.xml'):
                 found = app_state.packages_storage.check_xml(filename)
+            elif filename.lower().endswith('.json'):
+                found = app_state.packages_storage.check_json(filename)
             elif filename.lower().endswith('.stbl'):
                 found = app_state.packages_storage.check_stbl(filename)
             elif filename.lower().endswith('.package'):
